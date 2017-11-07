@@ -49,12 +49,14 @@ public class ServletForJdbc extends HttpServlet {
 			 /*while(rs1.next()){
 				 out.print(rs1.getString("PASSWORD"));
 			 }*/
+			
 			while(rs.next()){
-			//us+=rs.getString("USER_NAME")+" ";
-			//ps1+=rs.getString("PASSWORD")+" ";
+			
+			
 			if(rs.getString("USER_NAME").equals(user)) {
 			c=1;
 			}
+		
 			}
 			if(c==1){
 				String s1="select PASSWORD from user_data where USER_NAME=?";
@@ -62,7 +64,8 @@ public class ServletForJdbc extends HttpServlet {
 				ps1.setString(1,user);
 				ResultSet rs1=ps1.executeQuery();
 				while(rs1.next()){
-				if(rs1.getString("PASSWORD").equals(pass)) out.println("login sucsess");
+				if(rs1.getString("PASSWORD").equals(pass)) {response.setStatus(response.SC_MOVED_TEMPORARILY);
+				response.setHeader("Location", "Khelaa.html");}
 				else out.println("Chutiya password bhul gaya");
 				} 
 			}
