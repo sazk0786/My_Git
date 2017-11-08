@@ -3,25 +3,56 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>entry maaro</title>
+<style>
+#ahe{ color:#F4A460;
+	
+	margin-top:20%;
+	}
+#ae{
+background-color:#F4A460;
+padding: 20px 20px;
+text-align:center;
+text-decoration:none;
+border:dashed;
+}
+
+body{background-image: url("img2.jpg");
+     background-repeat:no-repeat;
+	 height:100%;
+	 background-size:cover;
+	
+	}
+form{border:30px;
+	color:#F4A460;
+	}
+</style>
 </head>
 <body>
 <script>
 function m1(){
 	window.location="signup.html";
-} 
-
+}
+function m2(){
+	window.location="passwordchange.html";
+}
 </script>
 <form action="ServletForJdbc" method="get">
-<h1>sign in please</h1>
+<p style="color:#CD853F; font-family:monospace; font-size:500%; margin-left:10%;" >This is MAH page so MAH rules</p>
+<h1 id="ahe">Sign In Here</h1>
 <hr>
 <br>
-username<input type="text" name="user">
-password<input type="password" name="pass">
-submit<input type="submit">
+username   <input style="margin-left:40px; background-color:#F4A460;" type="text" name="user"  >
+<br>
+<br>
+password    <input style="margin-left:40px; background-color:#F4A460;" type="password" name="pass" >
+<br>
+<br>
+			<input style="margin-left:100px;background-color:green;" type="submit">
 </form>
 <br>
-<h1>if you dont have an account sign up here:-</h1>
-<input type="button" onclick="m1()"value="sign up">
+<h1 style="color:#CD853F;">Forgotten password</h1><button style="background-color:#F4A460;"onclick="m2()"><div style="">RESET PASSWORD</div></button>
+<h1 style="color:red;">If you Don't Have An Account Sign Up Here:-</h1>
+<input id="ae" type="button" onclick="m1()"value="sign up">
 
 </body>
 </html>
