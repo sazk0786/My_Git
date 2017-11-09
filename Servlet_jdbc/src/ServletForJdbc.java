@@ -29,7 +29,8 @@ public class ServletForJdbc extends HttpServlet {
 		PrintWriter out =response.getWriter();
 		String user= request.getParameter("user");
 		String pass= request.getParameter("pass");
-		
+		String full="";
+		String ids="";
 		//out.println(user+" "+pass);
 	    Connection conn=null;
 		String s="";
@@ -45,7 +46,7 @@ public class ServletForJdbc extends HttpServlet {
 			
 			ResultSet rs=ps.executeQuery();
 			
-			 String p="";
+			
 			 /*while(rs1.next()){
 				 out.print(rs1.getString("PASSWORD"));
 			 }*/
@@ -64,8 +65,19 @@ public class ServletForJdbc extends HttpServlet {
 				ps1.setString(1,user);
 				ResultSet rs1=ps1.executeQuery();
 				while(rs1.next()){
-				if(rs1.getString("PASSWORD").equals(pass)) {response.setStatus(response.SC_MOVED_TEMPORARILY);
-				response.setHeader("Location", "Khelaa.html");}
+				if(rs1.getString("PASSWORD").equals(pass)){
+					String s2="select fullname,id from user_data where USER_NAME=?";
+					PreparedStatement ps2= conn.prepareStatement(s2);
+					ps2.setString(1,user);
+					ResultSet rs2=ps2.executeQuery();
+					while(rs2.next()){
+						full=rs2.getString(1);
+						ids=rs2.getString(2);
+					}
+					request.getSession().setAttribute("ful",full);
+					request.getSession().setAttribute("idz",ids);
+					response.sendRedirect("myjsp.jsp");
+				}
 				else out.println("Chutiya password bhul gaya");
 				} 
 			}
